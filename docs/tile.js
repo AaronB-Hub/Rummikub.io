@@ -1,48 +1,65 @@
-// Possible Symbols
-const SYMBOL_MOON = ":)";
-const symbol_Options = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", SYMBOL_MOON];
+/* Constants */
+    // Possible Symbols
+    const SYMBOL_MOON = ":)";
+    const SYMBOL_OPTIONS = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", SYMBOL_MOON];
 
-// Possible Colors
-const COLOR_BLACK = "Black";
-const COLOR_BLUE = "Blue";
-const COLOR_RED = "Red";
-const COLOR_YELLOW = "Yellow";
-const color_Options = [COLOR_BLACK, COLOR_BLUE, COLOR_RED, COLOR_YELLOW];
-
-// Possible Points
-const POINTS_MOON = 30;
-const points_Options = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, POINTS_MOON];
-
-// Possible States
-const STATE_POOL = "Pool";
-const STATE_HAND = "Hand";
-const STATE_PLAYING = "Playing";
-const STATE_PLAYED = "Played";
-const state_Options = [STATE_POOL, STATE_HAND, STATE_PLAYING, STATE_PLAYED];
-
-// Possible Visibilities
-const VISIBILITY_HIDDEN = "Hidden";
-const VISIBILITY_OWNER = "Owner";
-const VISIBILITY_ALL = "All";
-const visibility_Options = [VISIBILITY_HIDDEN, VISIBILITY_OWNER, VISIBILITY_ALL];
-
-export const TILES = {
-    "SYMBOL_MOON": SYMBOL_MOON,
-    "symbol_Options": symbol_Options,
-
-    "COLOR_BLACK": COLOR_BLACK,
-    "COLOR_BLUE": COLOR_BLUE,
-    "COLOR_RED": COLOR_BLACK,
-    "COLOR_YELLOW": COLOR_BLACK,
-
+    // Possible Colors
+    const COLOR_BLACK = "Black";
     const COLOR_BLUE = "Blue";
     const COLOR_RED = "Red";
     const COLOR_YELLOW = "Yellow";
-    const color_Options = [COLOR_BLACK, COLOR_BLUE, COLOR_RED, COLOR_YELLOW];
-};
+    const COLOR_OPTIONS = [COLOR_BLACK, COLOR_BLUE, COLOR_RED, COLOR_YELLOW];
+
+    // Possible Points
+    const POINTS_MOON = 30;
+    const POINTS_OPTIONS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, POINTS_MOON];
+
+    // Possible States
+    const STATE_POOL = "Pool";
+    const STATE_HAND = "Hand";
+    const STATE_PLAYING = "Playing";
+    const STATE_PLAYED = "Played";
+    const STATE_OPTIONS = [STATE_POOL, STATE_HAND, STATE_PLAYING, STATE_PLAYED];
+
+    // Possible Visibilities
+    const VISIBILITY_HIDDEN = "Hidden";
+    const VISIBILITY_OWNER = "Owner";
+    const VISIBILITY_ALL = "All";
+    const VISIBILITY_OPTIONS = [VISIBILITY_HIDDEN, VISIBILITY_OWNER, VISIBILITY_ALL];
+
+    // Deck
+    const DECK_REDUNDANCY_SIZE = 2;  // Number of copies of each tile are in the deck
+
+    // Export tile constants
+    export const TILES = {
+        SYMBOL_MOON: SYMBOL_MOON,
+        SYMBOL_OPTIONS: SYMBOL_OPTIONS,
+
+        COLOR_BLACK: COLOR_BLACK,
+        COLOR_BLUE: COLOR_BLUE,
+        COLOR_RED: COLOR_RED,
+        COLOR_YELLOW: COLOR_YELLOW,
+        COLOR_OPTIONS: COLOR_OPTIONS,
+
+        POINTS_MOON: POINTS_MOON,
+        POINTS_OPTIONS: POINTS_OPTIONS,
+
+        STATE_POOL: STATE_POOL,
+        STATE_HAND: STATE_HAND,
+        STATE_PLAYING: STATE_PLAYING,
+        STATE_PLAYED: STATE_PLAYED,
+        STATE_OPTIONS: STATE_OPTIONS,
+
+        VISIBILITY_HIDDEN: VISIBILITY_HIDDEN,
+        VISIBILITY_OWNER: VISIBILITY_OWNER,
+        VISIBILITY_ALL: VISIBILITY_ALL,
+        VISIBILITY_OPTIONS: VISIBILITY_OPTIONS,
+
+        DECK_REDUNDANCY_SIZE: DECK_REDUNDANCY_SIZE,
+    };
 
 // Basic tile class used in the game
-class Tile {
+export default class Tile {
 
     /* Attributes: */
     static symbol;
@@ -51,6 +68,7 @@ class Tile {
     visibility;
     moonTile = null;
 
+    /* Constructor: */
     constructor(symbolOption, colorOption) {
         this.symbol = symbolOption;
         this.color = colorOption;
@@ -62,7 +80,6 @@ class Tile {
     /* Getters: */
     get points() {
         if (this.symbol == SYMBOL_MOON) {
-            if (this.state == )
             return POINTS_MOON;
         }
         return +this.symbol;
@@ -90,8 +107,7 @@ class Tile {
 };
 
 // Deck of tiles
-const DECK_REDUNDANCY_SIZE = 2;  // How many copies of each tile are in the deck
-const Deck = buildDeck();
+export const Deck = buildDeck();
 
 function buildDeck() {
     let deck = [];
@@ -114,5 +130,3 @@ function buildDeck() {
 
     return deck;
 };
-
-export default Tile;

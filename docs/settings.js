@@ -1,20 +1,20 @@
-// Turn Length options
-const TURNLENGTH_60 = 60;  // in seconds
-const TURNLENGTH_120 = 120;  // in seconds
-const turnLength_Options = [TURNLENGTH_60, TURNLENGTH_120];
+/* Constants */
+    // Turn Length options
+    const TURNLENGTH_60 = 60;  // in seconds
+    const TURNLENGTH_120 = 120;  // in seconds
+    const turnLength_Options = [TURNLENGTH_60, TURNLENGTH_120];
 
-// Scoring Scheme options
-const SCORINGSCHEME_CLASSIC = "Classic";
-const SCORINGSCHEME_GOLF = "Golf";
-// Scheme that takes into account total points on the board?
-const scoringScheme_Options = [SCORINGSCHEME_CLASSIC, SCORINGSCHEME_GOLF];
+    // Scoring Scheme options
+    const SCORINGSCHEME_CLASSIC = "Classic";
+    const SCORINGSCHEME_GOLF = "Golf";
+    // Scheme that takes into account total points on the board?
+    const scoringScheme_Options = [SCORINGSCHEME_CLASSIC, SCORINGSCHEME_GOLF];
 
-// All Settings options
-export const settings_Options = {
-    "Turn Length (in seconds)" : turnLength_Options,
-    "Scoring Scheme" : scoringScheme_Options,
-};
-
+    // Exportll Settings options
+    export const settings_Options = {
+        "Turn Length (in seconds)" : turnLength_Options,
+        "Scoring Scheme" : scoringScheme_Options,
+    };
 
 // Settings class for controlling aspects of the game
 class Settings {
@@ -24,6 +24,7 @@ class Settings {
     turnLength;
     scoringScheme;
     
+    /* Constructor: */
     constructor(name, turnLengthOption, scoringSchemeOption) {
         this.name = name;
         this.turnLength = turnLengthOption;
