@@ -107,9 +107,7 @@ export default class Tile {
 };
 
 // Deck of tiles
-export const Deck = buildDeck();
-
-function buildDeck() {
+export function buildDeck() {
     let deck = [];
 
     for (let i = 0; i < DECK_REDUNDANCY_SIZE; i++) {

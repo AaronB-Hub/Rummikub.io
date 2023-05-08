@@ -2,18 +2,28 @@
     // Turn Length options
     const TURNLENGTH_60 = 60;  // in seconds
     const TURNLENGTH_120 = 120;  // in seconds
-    const turnLength_Options = [TURNLENGTH_60, TURNLENGTH_120];
+    const TURNLENGTH_OPTIONS = [TURNLENGTH_60, TURNLENGTH_120];
 
     // Scoring Scheme options
     const SCORINGSCHEME_CLASSIC = "Classic";
     const SCORINGSCHEME_GOLF = "Golf";
     // Scheme that takes into account total points on the board?
-    const scoringScheme_Options = [SCORINGSCHEME_CLASSIC, SCORINGSCHEME_GOLF];
+    const SCORINGSCHEME_OPTIONS = [SCORINGSCHEME_CLASSIC, SCORINGSCHEME_GOLF];
+
+    // Game rules
+    const STARTING_NUM_TILES = 14;
 
     // Exportll Settings options
-    export const settings_Options = {
-        "Turn Length (in seconds)" : turnLength_Options,
-        "Scoring Scheme" : scoringScheme_Options,
+    export const SETTINGS = {
+        TURNLENGTH_60: TURNLENGTH_60,
+        TURNLENGTH_120: TURNLENGTH_120,
+        TURNLENGTH_OPTIONS: TURNLENGTH_OPTIONS,
+
+        SCORINGSCHEME_CLASSIC: SCORINGSCHEME_CLASSIC,
+        SCORINGSCHEME_GOLF: SCORINGSCHEME_GOLF,
+        SCORINGSCHEME_OPTIONS: SCORINGSCHEME_OPTIONS,
+
+        STARTING_NUM_TILES: STARTING_NUM_TILES,
     };
 
 // Settings class for controlling aspects of the game

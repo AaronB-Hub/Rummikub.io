@@ -2,6 +2,7 @@
 import Tile from "./tile";
 import Player from "./player";
 import Settings from "./settings";
+import * as UTILS from "./utils";
 
 /* Constants */
     // Player Type options
@@ -20,21 +21,36 @@ import Settings from "./settings";
 class Player {
 
     /* Attributes: */
-    hand;  // array of Tiles
-    score;  // Overall score (outside of current game)
+    name;
     type;  // CPU/HMN
+    score;  // Overall score (outside of current game)
+    hand = [];  // array of Tiles
 
     /* Constructor: */
-    constructor() {};
+    constructor(nameString, typeOption) {
+        this.name = nameString;
+        this.type = typeOption;
+        this.score = 0;
+    };
 
     /* Getters: */
     get points() {
         let points = 0;
-        for (tile of hand) {
+        for (tile of this.hand) {
             points += tile.points;
         }
         return points;
     };
+
+    /* Methods: */
+    draw(tilePool) {
+        this.hand.push(UTILS.popRandom(tilePool));  // Move tile from deck to player's hand
+    };
+
+    play() {
+
+    };
+
 };
 
 export default Player;
