@@ -67,6 +67,7 @@ export default class Tile {
     state;
     visibility;
     moonTile = null;
+    selected;
 
     /* Constructor: */
     constructor(symbolOption, colorOption) {
@@ -80,7 +81,11 @@ export default class Tile {
     /* Getters: */
     get points() {
         if (this.symbol == SYMBOL_MOON) {
-            return POINTS_MOON;
+            // if (this.state == STATE_HAND) {
+                return POINTS_MOON;
+            // } else {
+                // return this.moonTile.points;
+            // }
         }
         return +this.symbol;
     };
