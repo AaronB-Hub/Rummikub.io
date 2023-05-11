@@ -2,9 +2,9 @@
 import Tile, { buildDeck } from "./tile";
 import Player from "./player";
 import Settings, { SETTINGS } from "./settings";
-import * as UTILS from "./utils";
+import * as UTILS from "../utils";
 
-class Game {
+export default class Game {
 
     /* Attributes: */
     name;
@@ -75,5 +75,3 @@ class Game {
     };
 
 };
-
-export default Game;
