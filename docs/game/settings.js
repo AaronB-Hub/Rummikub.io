@@ -1,51 +1,55 @@
 /* Constants */
     // Turn Length options
-    const TURNLENGTH_60 = 60;  // in seconds
-    const TURNLENGTH_120 = 120;  // in seconds
-    const TURNLENGTH_OPTIONS = [TURNLENGTH_60, TURNLENGTH_120];
+    const TURNLENGTH_OPTIONS = {  // in seconds
+        '60s': 60,
+        '120s': 120,
+    };
 
     // Scoring Scheme options
-    const SCORINGSCHEME_CLASSIC = "Classic";
-    const SCORINGSCHEME_GOLF = "Golf";
-    // Scheme that takes into account total points on the board?
-    const SCORINGSCHEME_OPTIONS = [SCORINGSCHEME_CLASSIC, SCORINGSCHEME_GOLF];
+    const SCORINGSCHEME_OPTIONS = {
+        CLASSIC: "Classic",
+        GOLF: "Golf",
+        // Scheme that takes into account total points on the board?
+    };
 
     // Game rules
-    const STARTING_NUM_TILES = 14;
+    const STARTINGNUMTILES_OPTIONS = {
+        '14': 14,
+    };
 
     // Exportll Settings options
     export const SETTINGS = {
-        TURNLENGTH_60: TURNLENGTH_60,
-        TURNLENGTH_120: TURNLENGTH_120,
-        TURNLENGTH_OPTIONS: TURNLENGTH_OPTIONS,
 
-        SCORINGSCHEME_CLASSIC: SCORINGSCHEME_CLASSIC,
-        SCORINGSCHEME_GOLF: SCORINGSCHEME_GOLF,
-        SCORINGSCHEME_OPTIONS: SCORINGSCHEME_OPTIONS,
+        // Settings Options
+        TURNLENGTH: TURNLENGTH_OPTIONS,
+        SCORINGSCHEME: SCORINGSCHEME_OPTIONS,
+        STARTINGNUMTILES: STARTINGNUMTILES_OPTIONS,
 
-        STARTING_NUM_TILES: STARTING_NUM_TILES,
+        // Settings Presets
+        PRESETS: {
+            CLASSIC: new Settings("Classic", TURNLENGTH_OPTIONS["120s"], SCORINGSCHEME_OPTIONS.CLASSIC, STARTINGNUMTILES_OPTIONS[14]),
+            GOLF: new Settings("Golf", TURNLENGTH_OPTIONS["120s"], SCORINGSCHEME_OPTIONS.GOLF, STARTINGNUMTILES_OPTIONS[14]),
+        },
     };
 
 // Settings class for controlling aspects of the game
-class Settings {
+export default class Settings {
 
     /* Attributes: */
     name;
     turnLength;
     scoringScheme;
+    startingNumTiles;
     
     /* Constructor: */
-    constructor(name, turnLengthOption, scoringSchemeOption) {
+    constructor(name, turnLengthOption, scoringSchemeOption, startingNumTilesOption) {
         this.name = name;
         this.turnLength = turnLengthOption;
         this.scoringScheme = scoringSchemeOption;
+        this.startingNumTiles = startingNumTilesOption;
     };
 
 };
 
-// Settings Presets
-const defaultSettings = new Settings("Default", TURNLENGTH_120, SCORINGSCHEME_CLASSIC);
-const golfSettings = new Settings("Golf", TURNLENGTH_120, SCORINGSCHEME_GOLF);
-export const settingsPresets = [defaultSettings, golfSettings];
 
-export default Settings;
+// export const settingsPresets = [defaultSettings, golfSettings];

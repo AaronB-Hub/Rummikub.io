@@ -1,30 +1,32 @@
 /* Imports */
 import Tile from "./tile";
-import Player from "./player";
+import Board, { Group, BoardView } from "./board";
+import { Turn } from "./play";
 import Settings from "./settings";
 import * as UTILS from "./utils";
 
 /* Constants */
     // Player Type options
-    const TYPE_HMN = 0;
-    const TYPE_CPU = 1;
-    const TYPE_OPTIONS = [TYPE_HMN, TYPE_CPU];
+    const TYPE_OPTIONS = {
+        HMN: 0,
+        CPU: 1,
+    };
 
     // Export Player constants
     export const PLAYER = {
-        TYPE_HMN: TYPE_HMN,
-        TYPE_CPU: TYPE_CPU,
-        TYPE_OPTIONS: TYPE_OPTIONS,
+        TYPE: TYPE_OPTIONS,
     };
 
 // Player class for participants in the game
-class Player {
+export default class Player {
 
     /* Attributes: */
     name;
     type;  // CPU/HMN
     score;  // Overall score (outside of current game)
     hand = [];  // array of Tiles
+    boardview;
+    turn;
 
     /* Constructor: */
     constructor(nameString, typeOption) {
@@ -43,14 +45,74 @@ class Player {
     };
 
     /* Methods: */
-    draw(tilePool) {
-        this.hand.push(UTILS.popRandom(tilePool));  // Move tile from deck to player's hand
+    draw(tile) {
+        tile.pickUp();  // Update its status
+        this.hand.push(UTILS.popRandom(tile));  // Move tile from deck to player's hand
     };
 
     play() {
+        // Starts turn (and timer)
+        this.turn = new Turn(this.settings.turnLength);
 
+        // Do turn logic
+        // this.turn.go();  
+
+        while (!this.turn.update) {
+        // while (!this.turn.timer > 0) {
+
+        }
+
+        return this.turn;
+    };
+
+    makeMove() {
+        this.turn.update = "TEST";
     };
 
 };
 
-export default Player;
+
+export const TURN = {
+    TYPE: {
+        DRAW: "draw",
+        PLACE: "place",
+        PLAY: "play",
+    },
+};
+
+export class Turn {
+
+    /* Attributes: */
+    timer;
+    tick;
+    type;
+    update;
+
+    /* Constructor: */
+    constructor(timerOption) {
+        this.timer = timerOption;
+        this.tick = setInterval(this.secondTick, 1000);
+        this.update = null;
+    };
+
+    /* Methods: */
+    go() {
+        // while (this.timer > 0) {
+        //     // Do stuff
+        // }
+    };
+
+    stop() {
+        clearInterval(tick);
+    };
+
+    secondTick() {
+        this.timer --;
+
+        // If timer runs out
+        if (this.timer == 0) {
+            this.type = TURN.TYPE.DRAW;
+            this.stop();
+        }
+    };
+};

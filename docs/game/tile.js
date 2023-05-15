@@ -15,11 +15,11 @@
     const POINTS_OPTIONS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, POINTS_MOON];
 
     // Possible States
-    const STATE_POOL = "Pool";
+    const STATE_DECK = "Deck";
     const STATE_HAND = "Hand";
     const STATE_PLAYING = "Playing";
     const STATE_PLAYED = "Played";
-    const STATE_OPTIONS = [STATE_POOL, STATE_HAND, STATE_PLAYING, STATE_PLAYED];
+    const STATE_OPTIONS = [STATE_DECK, STATE_HAND, STATE_PLAYING, STATE_PLAYED];
 
     // Possible Visibilities
     const VISIBILITY_HIDDEN = "Hidden";
@@ -73,7 +73,7 @@ export default class Tile {
     constructor(symbolOption, colorOption) {
         this.symbol = symbolOption;
         this.color = colorOption;
-        this.state = STATE_POOL;
+        this.state = STATE_DECK;
         this.visibility = VISIBILITY_HIDDEN;
         // if (this.symbol != SYMBOL_MOON) { this.moonTile = null; }
     };

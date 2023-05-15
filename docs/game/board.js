@@ -79,7 +79,8 @@ export default class Board {
     isValid;
 
     /* Constructor: */
-    constructor() {
+    constructor(groupObjects) {
+        this.groups = groupObjects;
         this.isValid = true;
     };
 
@@ -106,4 +107,28 @@ export default class Board {
         return checkValid;
     };
 
+    checkDiff(diffBoard) {
+        // compare two arrays of Groups object
+        // return the difference
+    };
+
+};
+
+// Create manipulable view of the game board
+export class BoardView extends Board {
+
+    /* Attributes: */
+    hand;  // Hand of the current player
+
+    /* Constructor: */
+    constructor(groupObjects) {
+        // Always call super first in constructor
+        super(groupObjects);  // Initial board from the game
+    };
+
+    /* Methods: */
+    updateBoard() {
+        // Implement changes in view
+        return new Board(this.groups);
+    };
 };
